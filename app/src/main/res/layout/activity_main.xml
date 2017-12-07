@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jazzzzum.labquiz.MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="117dp"
+        app:srcCompat="?android:attr/textSelectHandle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/etusername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_below="@+id/etusername"
+        android:layout_alignLeft="@+id/etusername"
+        android:layout_alignStart="@+id/etusername"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnremember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="remember me"
+        android:layout_alignBaseline="@+id/btnlogin"
+        android:layout_alignBottom="@+id/btnlogin"
+        android:layout_toLeftOf="@+id/imageView"
+        android:layout_toStartOf="@+id/imageView"
+        android:layout_marginRight="21dp"
+        android:layout_marginEnd="21dp" />
+
+    <Button
+        android:id="@+id/btnlogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp"
+        android:text="login"
+        android:onClick="nextactivity"
+        android:layout_marginBottom="104dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView" />
+</RelativeLayout>
