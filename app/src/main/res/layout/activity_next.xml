@@ -7,30 +7,27 @@
     tools:context="com.example.jazzzzum.labquiz.NextActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
         android:text="WELCOME"
-        android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:id="@+id/btnlogout"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+    <TextView
+        android:id="@+id/tv_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_welcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:onClick="Logout"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="94dp"
-        android:onClick="logout"
-        android:text="Logout" />
+        android:layout_marginBottom="70dp" />
 
-    <TextView
-        android:id="@+id/tvdisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp" />
 </RelativeLayout>

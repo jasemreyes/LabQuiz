@@ -3,65 +3,52 @@ package com.example.jazzzzum.labquiz;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.jazzzzum.labquiz.NextActivity;
 
 public class MainActivity extends AppCompatActivity {
-    String username, password;
-    EditText et_username;
-    EditText et_password;
-    Button btn_remember;
-    Button btn_login;
-    SharedPreferences loginPreferences;
-    SharedPreferences.Editor loginPrefsEditor;
-    Boolean saveLogin;
+    SharedPreferences preferences;
+    EditText etuser, etpass;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        et_username = (EditText) findViewById(R.id.etusername);
-        et_password = (EditText) findViewById(R.id.etpassword);
-        btn_remember = (Button) findViewById(R.id.btnremember);
-        btn_login = (Button) findViewById(R.id.btnlogin);
-        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-        loginPrefsEditor = loginPreferences.edit();
+        etuser = (EditText)findViewById(R.id.et_user);
+        etpass = (EditText)findViewById(R.id.et_pass);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        saveLogin = loginPreferences.getBoolean("saveLogin", false);
-        if (saveLogin == true) {
-            et_username.setText(loginPreferences.getString("username", ""));
-            et_password.setText(loginPreferences.getString("password", ""));
-            btn_remember.callOnClick();
-        }
     }
 
-    public void onClick(View view) {
-        if (view == btn_login) {
-            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(et_username.getWindowToken(), 0);
+    public void Login (View view) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("username", etuser.getText().toString());
+        editor.putString("password", etpass.getText().toString());
+        editor.commit();
+        Nextact();
 
-            username = et_username.getText().toString();
-            password = et_password.getText().toString();
-
-            if (btn_remember.callOnClick()) {
-                loginPrefsEditor.putBoolean("saveLogin", true);
-                loginPrefsEditor.putString("username", username);
-                loginPrefsEditor.putString("password", password);
-                loginPrefsEditor.commit();
-            } else {
-                loginPrefsEditor.clear();
-                loginPrefsEditor.commit();
-            }
-        }
     }
+    public void rememberme (View view){
+        String username = preferences.getString("username","");
+        String password = preferences.getString("password","");
 
-    public void nextactivity (View view){
+        etuser.setText(username,TextView.BufferType.EDITABLE);
+        etpass.setText(password,TextView.BufferType.EDITABLE);
+
+    }
+    public void Nextact (){
         Intent intent = new Intent(this, NextActivity.class);
+
         startActivity(intent);
+
     }
 }
